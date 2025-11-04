@@ -2,8 +2,8 @@ version: 2
 
 sources:
   - name: gz_raw_data
-    schema: gz_raw_data # dataset BigQuery
-    # loader: bigquery         # facultatif
+    schema: gz_raw_data  # dataset BigQuery
+    # loader: bigquery    # facultatif
     tables:
       - name: sales
         identifier: raw_gz_sales
@@ -18,7 +18,7 @@ sources:
 models:
   - name: stg_gz_raw_data__product
     columns:
-      - name: product_id # ou products_id si c’est ton nom final
+      - name: product_id   # ou products_id si c’est ton nom final
         tests:
           - not_null
           - unique
@@ -41,4 +41,3 @@ models:
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns: [orders_id, product_id]
-
