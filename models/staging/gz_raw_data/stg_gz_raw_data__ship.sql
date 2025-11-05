@@ -14,4 +14,3 @@ renamed AS (
 )
 SELECT *
 FROM renamed
--- LIMIT 1000 
