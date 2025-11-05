@@ -18,6 +18,15 @@ sources:
             description: "the amount paid by the customer to purchase the product. revenue = quantity * selling_price"
           - name: quantity
             description: "the quantity of products purchased for a given order"
+        tests:
+          # Vérifie l'unicité de la combinaison (orders_id, pdt_id) via une expression SQL BigQuery
+          - unique:
+              column_name: "(orders_id || '-' || pdt_id)"
+          # Optionnel si dbt_utils est installé: dé-commentez les lignes ci-dessous
+          # - dbt_utils.unique_combination_of_columns:
+          #     combination_of_columns:
+          #       - orders_id
+          #       - pdt_id
 
       - name: product
         identifier: raw_gz_product
